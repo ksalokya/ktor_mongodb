@@ -7,7 +7,13 @@ class User {
     // as userID is unique
     @BsonId
     val userId: String? = ObjectId().toString()
-    val username: String? = null
-    val email: String? = null
-    val password: String? = null
+    var username: String? = null
+    var email: String? = null
+    var password: String? = null
+
+    constructor(name : String?, mail : String?, pwd : String?){
+        this.username = name
+        this.email = mail
+        this.password = pwd
+    }
 }

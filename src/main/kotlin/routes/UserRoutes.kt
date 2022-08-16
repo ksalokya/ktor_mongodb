@@ -42,6 +42,7 @@ fun Route.userRoutes(
             val requestBody = call.receive<User>()
             // updating user by ID
             val isUpdated = db.updateUserById(requestBody)
+
             if (isUpdated)
                 call.respondText("User updated successfully!")
             else

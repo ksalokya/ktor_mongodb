@@ -1,5 +1,6 @@
 package com.example
 
+import com.example.routes.authRoutes
 import io.ktor.serialization.gson.*
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
@@ -21,5 +22,6 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         userRoutes(databaseFactory)
+        authRoutes(databaseFactory)
     }
 }

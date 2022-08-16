@@ -35,13 +35,13 @@ class DatabaseFactory {
         return userCollection.find(User::userId eq userId).toList()
     }
 
-    // update user -> optimize it**
+    suspend fun getPasswordByEmail(email: String): List<User> {
+        return userCollection.find(User::email eq email).projection(User::password).toList()
+    }
+
+    // update user
     suspend fun updateUserById(user: User): Boolean {
-        val userExists = userCollection.findOneById(user.userId!!)
-        if (userExists != null) {
-            return userCollection.updateOneById(user.userId, user).wasAcknowledged()
-        }
-        return false
+        return userCollection.updateOneById(user.userId!!, user).wasAcknowledged()
     }
 
     // delete user
